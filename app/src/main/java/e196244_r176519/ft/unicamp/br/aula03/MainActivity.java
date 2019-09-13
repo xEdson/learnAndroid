@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         e196244_r176519.ft.unicamp.br.aula03.autorFragment autor;
         autor = (e196244_r176519.ft.unicamp.br.aula03.autorFragment) fragmentManager.findFragmentByTag("f1_tag");
         if(autor == null){
-            autor = new e196244_r176519.ft.unicamp.br.aula03t.autorFragment();
+            autor = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
         }
         autor.setText(msg);
         replaceFragment(autor, "f1_tag");
