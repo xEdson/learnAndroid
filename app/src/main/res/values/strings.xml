@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">aula03</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_contato">Contato</string>
+
+    <string name="Autores">Autores</string>
+    <string name="Alunos">Alunos</string>
+    <string name="Biografias">Biografias</string>
+    <string name="Jogo1">jogo 1</string>
+    <string name="to_hint">hint</string>
+    <string name="to_label">label</string>
+    <string name="to_txtlogin">login</string>
+    <string name="to_edtlogin">login</string>
+    <string name="to_txtsenha">senha</string>
+    <string name="to_edtsenha">senha</string>
+    <string name="to_edtassunto">assunto</string>
+    <string name="message">mensagem</string>
+    <string name="jogo2">jogo 2</string>
+    <string name="send">mensagem</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
