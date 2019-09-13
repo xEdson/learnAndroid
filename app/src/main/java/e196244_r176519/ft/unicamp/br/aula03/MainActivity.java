@@ -25,8 +25,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.widget.Toast;
-
-import e196244_r176519.ft.unicamp.br.aula003.mailFragment;
 import e196244_r176519.ft.unicamp.br.aula03.alunos.AlunosFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if(savedInstanceState == null){
-            e196244_r176519.ft.unicamp.br.aula003.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula003.autorFragment();
+            e196244_r176519.ft.unicamp.br.aula03.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
             fragmentTransaction.add(R.id.frame, f1, "f1_tag");
             fragmentTransaction.commit();
         }
@@ -117,7 +115,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        e196244_r176519.ft.unicamp.br.aula003.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula003.autorFragment();
+        e196244_r176519.ft.unicamp.br.aula03.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frame, f1, "f1_tag");
@@ -151,10 +149,10 @@ public class MainActivity extends AppCompatActivity
 
 
     public void doSomething(String msg){
-        e196244_r176519.ft.unicamp.br.aula003.autorFragment autor;
-        autor = (e196244_r176519.ft.unicamp.br.aula003.autorFragment) fragmentManager.findFragmentByTag("f1_tag");
+        e196244_r176519.ft.unicamp.br.aula03.autorFragment autor;
+        autor = (e196244_r176519.ft.unicamp.br.aula03.autorFragment) fragmentManager.findFragmentByTag("f1_tag");
         if(autor == null){
-            autor = new e196244_r176519.ft.unicamp.br.aula003.autorFragment();
+            autor = new e196244_r176519.ft.unicamp.br.aula03t.autorFragment();
         }
         autor.setText(msg);
         replaceFragment(autor, "f1_tag");
