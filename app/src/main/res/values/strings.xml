@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">aula03</string>
+    <string name="app_name">monetaryApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -22,7 +22,22 @@
     <string name="message">mensagem</string>
     <string name="jogo2">jogo 2</string>
     <string name="send">mensagem</string>
+    <string name="lista">lista</string>
+    <string name="criar">criar</string>
+    <string name="grafico">grafico</string>
+
+    <string-array name="typo">
+        <item>Trabalho</item>
+        <item>Lazer</item>
+        <item>Alimeitacao</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_da_transacao">Nome da transacao:</string>
+    <string name="tipo_de_transacao">Tipo de transacao</string>
+    <string name="valor_da_transacao">valor da transacao</string>
+    <string name="pagando">Pagando</string>
+    <string name="descricao_da_transacao">Descricao da transacao</string>
+    <string name="deletar">Deletar</string>
 </resources>

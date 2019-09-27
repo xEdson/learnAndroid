@@ -5,25 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/autores"
+            android:id="@+id/lista_transacoes"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/Autores" />
+            android:title="lista de transacoes" />
         <item
-            android:id="@+id/nav_alunos"
+            android:id="@+id/criar_transacao"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Alunos" />
+            android:title="criar transacao" />
         <item
-            android:id="@+id/biografia"
+            android:id="@+id/grafico"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/Biografias" />
-        <item
-            android:id="@+id/jogo1"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/Jogo1" />
-        <item
-            android:id="@+id/jogo2"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/jogo2" />
+            android:title="Grafico de transacoes" />
     </group>
 
 </menu>
