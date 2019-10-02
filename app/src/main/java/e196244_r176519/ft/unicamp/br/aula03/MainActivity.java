@@ -25,6 +25,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.widget.Toast;
+
+import e196244_r176519.ft.unicamp.br.aula03.Puzzle.PuzzleFragment;
 import e196244_r176519.ft.unicamp.br.aula03.alunos.AlunosFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -115,28 +117,42 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        e196244_r176519.ft.unicamp.br.aula03.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
-        fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame, f1, "f1_tag");
-        fragmentTransaction.commit();
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Context contexto = getApplicationContext();
         Toast toast = Toast.makeText(contexto, "null", Toast.LENGTH_SHORT);
         if (id == R.id.autores) {
+
             toast = Toast.makeText(contexto, "Autores", Toast.LENGTH_SHORT);
-            replaceFragment(f1, "f1_tag");
+            Fragment autorFragment = fragmentManager.findFragmentByTag("f1_tag");
+            if(autorFragment == null)
+                autorFragment = new autorFragment();
+
+            replaceFragment(autorFragment, "f1_tag");
         } else if (id == R.id.nav_alunos) {
+
             toast = Toast.makeText(contexto, "Alunos",Toast.LENGTH_SHORT);
             Fragment alunosFragment = fragmentManager.findFragmentByTag("alunos");
             if(alunosFragment == null)
                 alunosFragment = new AlunosFragment();
             replaceFragment(alunosFragment,"alunos");
+
         } else if (id == R.id.biografia) {
-            toast = Toast.makeText(contexto, "Biografias",Toast.LENGTH_SHORT);
+
+            toast = Toast.makeText(contexto, "biografias",Toast.LENGTH_SHORT);
+            Fragment biografiaGragment = fragmentManager.findFragmentByTag("biografias");
+            if(biografiaGragment == null)
+                biografiaGragment = new BiografiasFragment();
+            replaceFragment(biografiaGragment,"alunos");
+
         } else if (id == R.id.jogo1) {
+
             toast = Toast.makeText(contexto, "Jogo 1",Toast.LENGTH_SHORT);
+            Fragment puzzleFragment = fragmentManager.findFragmentByTag("puzzle");
+            if(puzzleFragment == null)
+                puzzleFragment = new PuzzleFragment();
+            replaceFragment(puzzleFragment,"alunos");
+
         }else if (id == R.id.jogo2) {
             toast = Toast.makeText(contexto, "Jogo 2",Toast.LENGTH_SHORT);
         }
@@ -156,5 +172,18 @@ public class MainActivity extends AppCompatActivity
         }
         autor.setText(msg);
         replaceFragment(autor, "f1_tag");
+    }
+
+    public void showBiografia(int position){
+
+        BiografiasFragment biografiasFragment = (BiografiasFragment) fragmentManager.findFragmentByTag("biografias");
+
+        if(biografiasFragment == null){
+            biografiasFragment = new BiografiasFragment();
+        }
+
+        biografiasFragment.setPosition(position);
+        replaceFragment(biografiasFragment, "biografias");
+
     }
 }

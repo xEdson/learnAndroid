@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import e196244_r176519.ft.unicamp.br.aula03.MainActivity;
 import e196244_r176519.ft.unicamp.br.aula03.R;
 
 /**
@@ -48,6 +49,11 @@ public class AlunosFragment extends Fragment {
             @Override
             public void onMyItemClick(String name) {
                 Toast.makeText(getActivity(), name,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onMyItemLongClick(int position) {
+                ((MainActivity) getActivity()).showBiografia(position);
             }
         });
         recycle.setAdapter(adapter);
