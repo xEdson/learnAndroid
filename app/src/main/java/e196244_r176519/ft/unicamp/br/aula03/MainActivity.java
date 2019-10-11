@@ -1,6 +1,7 @@
 package e196244_r176519.ft.unicamp.br.aula03;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle.PuzzleFragment;
 import e196244_r176519.ft.unicamp.br.aula03.alunos.AlunosFragment;
+import e196244_r176519.ft.unicamp.br.aula03.kotlin.kotlinActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -143,18 +145,21 @@ public class MainActivity extends AppCompatActivity
             Fragment biografiaGragment = fragmentManager.findFragmentByTag("biografias");
             if(biografiaGragment == null)
                 biografiaGragment = new BiografiasFragment();
-            replaceFragment(biografiaGragment,"alunos");
+            replaceFragment(biografiaGragment,"biografias");
 
         } else if (id == R.id.jogo1) {
 
             toast = Toast.makeText(contexto, "Jogo 1",Toast.LENGTH_SHORT);
             Fragment puzzleFragment = fragmentManager.findFragmentByTag("puzzle");
             if(puzzleFragment == null)
-                puzzleFragment = new PuzzleFragment();
+            puzzleFragment = new PuzzleFragment();
             replaceFragment(puzzleFragment,"alunos");
 
         }else if (id == R.id.jogo2) {
             toast = Toast.makeText(contexto, "Jogo 2",Toast.LENGTH_SHORT);
+        }else if (id == R.id.newAct) {
+            Intent intent = new Intent(this, kotlinActivity.class);
+            startActivity(intent);
         }
         toast.show();
 

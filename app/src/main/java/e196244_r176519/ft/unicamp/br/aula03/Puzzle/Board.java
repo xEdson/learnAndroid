@@ -1,5 +1,7 @@
 package e196244_r176519.ft.unicamp.br.aula03.Puzzle;
 
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -77,6 +79,7 @@ public class Board {
     public void startGame(){
         Collections.shuffle(this.gameIndex);
     }
+
     public int getCorrectBlock(int line, int column){
 
         return blocks.get(line*numColumns+column);
@@ -84,8 +87,35 @@ public class Board {
     }
     public int getGameBlock(int line, int column){
 
+        return blocks.get(gameIndex.get(line*numColumns+column));
+
+    }
+    public int getGameIndex(int line, int column){
 
         return gameIndex.get(line*numColumns+column);
+
+    }
+
+//    public boolean findWitePiceInColumn(ImageView imageView){
+//
+//        for(int line = 0; line < height; line++){
+//            if(getGameIndex(line, col) == 0)
+//                return true;
+//        }
+//        return false;
+//
+//
+//    }
+
+
+    public boolean findWitePiceInLine(int line){
+
+        for(int col = 0; col < height; col++){
+            if(getGameIndex(line, col) == 0)
+                return true;
+        }
+        return false;
+
 
     }
 

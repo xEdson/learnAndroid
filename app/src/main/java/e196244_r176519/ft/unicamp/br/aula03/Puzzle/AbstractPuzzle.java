@@ -16,7 +16,7 @@ public abstract class AbstractPuzzle {
     private ArrayList<ImageView> image;
 
 
-    public void readraW() {
+    public void reDraw() {
 
         for (int i = 0; i < board.getNumLines(); i++) {
             for (int j = 0; j < board.getNumColumns(); j++) {
@@ -27,6 +27,8 @@ public abstract class AbstractPuzzle {
     }
 
     public abstract void addListener(ImageView imageView, int line, int column);
+
+    public abstract void addListener(ImageView imageView, int line, int column, Board board);
 
     public abstract boolean endGame();
 }
