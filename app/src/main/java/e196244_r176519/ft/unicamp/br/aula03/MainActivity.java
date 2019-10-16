@@ -3,31 +3,28 @@ package e196244_r176519.ft.unicamp.br.aula03;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.Menu;
-import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
+import e196244_r176519.ft.unicamp.br.aula03.DataBase.DatabaseFragment;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle.PuzzleFragment;
+import e196244_r176519.ft.unicamp.br.aula03.Puzzle2.Assets;
+import e196244_r176519.ft.unicamp.br.aula03.Puzzle2.NameFragment;
 import e196244_r176519.ft.unicamp.br.aula03.alunos.AlunosFragment;
 import e196244_r176519.ft.unicamp.br.aula03.kotlin.kotlinActivity;
 
@@ -61,14 +58,14 @@ public class MainActivity extends AppCompatActivity
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             e196244_r176519.ft.unicamp.br.aula03.autorFragment f1 = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
             fragmentTransaction.add(R.id.frame, f1, "f1_tag");
             fragmentTransaction.commit();
         }
     }
 
-    public void replaceFragment(Fragment fragment, String tag){
+    public void replaceFragment(Fragment fragment, String tag) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment, tag);
         fragmentTransaction.addToBackStack(null);
@@ -104,13 +101,13 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }else if (id == R.id.action_contato) {
+        } else if (id == R.id.action_contato) {
             toast = Toast.makeText(contexto, "mail", Toast.LENGTH_SHORT);
             toast.show();
             Fragment mailFragment = fragmentManager.findFragmentByTag("mail");
-            if(mailFragment == null)
+            if (mailFragment == null)
                 mailFragment = new mailFragment();
-            replaceFragment(mailFragment,"mail");
+            replaceFragment(mailFragment, "mail");
         }
 
         return super.onOptionsItemSelected(item);
@@ -127,39 +124,54 @@ public class MainActivity extends AppCompatActivity
 
             toast = Toast.makeText(contexto, "Autores", Toast.LENGTH_SHORT);
             Fragment autorFragment = fragmentManager.findFragmentByTag("f1_tag");
-            if(autorFragment == null)
+            if (autorFragment == null)
                 autorFragment = new autorFragment();
 
             replaceFragment(autorFragment, "f1_tag");
         } else if (id == R.id.nav_alunos) {
 
-            toast = Toast.makeText(contexto, "Alunos",Toast.LENGTH_SHORT);
+            toast = Toast.makeText(contexto, "Alunos", Toast.LENGTH_SHORT);
             Fragment alunosFragment = fragmentManager.findFragmentByTag("alunos");
-            if(alunosFragment == null)
+            if (alunosFragment == null)
                 alunosFragment = new AlunosFragment();
-            replaceFragment(alunosFragment,"alunos");
+            replaceFragment(alunosFragment, "alunos");
 
         } else if (id == R.id.biografia) {
 
-            toast = Toast.makeText(contexto, "biografias",Toast.LENGTH_SHORT);
+            toast = Toast.makeText(contexto, "biografias", Toast.LENGTH_SHORT);
             Fragment biografiaGragment = fragmentManager.findFragmentByTag("biografias");
-            if(biografiaGragment == null)
+            if (biografiaGragment == null)
                 biografiaGragment = new BiografiasFragment();
-            replaceFragment(biografiaGragment,"biografias");
+            replaceFragment(biografiaGragment, "biografias");
 
         } else if (id == R.id.jogo1) {
 
-            toast = Toast.makeText(contexto, "Jogo 1",Toast.LENGTH_SHORT);
+            toast = Toast.makeText(contexto, "Jogo 1", Toast.LENGTH_SHORT);
             Fragment puzzleFragment = fragmentManager.findFragmentByTag("puzzle");
-            if(puzzleFragment == null)
-            puzzleFragment = new PuzzleFragment();
-            replaceFragment(puzzleFragment,"alunos");
+            if (puzzleFragment == null)
+                puzzleFragment = new PuzzleFragment();
+            replaceFragment(puzzleFragment, "alunos");
 
-        }else if (id == R.id.jogo2) {
-            toast = Toast.makeText(contexto, "Jogo 2",Toast.LENGTH_SHORT);
-        }else if (id == R.id.newAct) {
+        } else if (id == R.id.jogo2) {
+            NameFragment nameFragment = (NameFragment) fragmentManager.findFragmentByTag("name");
+            if (nameFragment == null) {
+                nameFragment = new NameFragment();
+            }
+            replaceFragment(nameFragment, "name");
+        } else if (id == R.id.Assets) {
+            Fragment assets = (Assets) fragmentManager.findFragmentByTag("Assets");
+            if (assets == null) {
+                assets = new Assets();
+            }
+            replaceFragment(assets, "Assets");
+        } else if (id == R.id.newAct) {
             Intent intent = new Intent(this, kotlinActivity.class);
             startActivity(intent);
+        } else if (id == R.id.database) {
+            Fragment bd = fragmentManager.findFragmentByTag("db");
+            if (bd == null)
+                bd = new DatabaseFragment();
+            replaceFragment(bd, "db");
         }
         toast.show();
 
@@ -169,21 +181,21 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void doSomething(String msg){
+    public void doSomething(String msg) {
         e196244_r176519.ft.unicamp.br.aula03.autorFragment autor;
         autor = (e196244_r176519.ft.unicamp.br.aula03.autorFragment) fragmentManager.findFragmentByTag("f1_tag");
-        if(autor == null){
+        if (autor == null) {
             autor = new e196244_r176519.ft.unicamp.br.aula03.autorFragment();
         }
         autor.setText(msg);
         replaceFragment(autor, "f1_tag");
     }
 
-    public void showBiografia(int position){
+    public void showBiografia(int position) {
 
         BiografiasFragment biografiasFragment = (BiografiasFragment) fragmentManager.findFragmentByTag("biografias");
 
-        if(biografiasFragment == null){
+        if (biografiasFragment == null) {
             biografiasFragment = new BiografiasFragment();
         }
 
