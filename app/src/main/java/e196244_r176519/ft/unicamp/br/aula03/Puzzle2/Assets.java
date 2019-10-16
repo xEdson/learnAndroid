@@ -42,7 +42,9 @@ public class Assets extends Fragment {
         super.onStart();
         dbHelper = new DatabaseHelper(getActivity());
         sqLiteDatabase = dbHelper.getReadableDatabase();
-        onSelecionar();
+        onSelecionarPorcentagem();
+        onSelecionarNomeMaisErrado();
+        onSelecionarPessoaMaisErrada();
     }
 
     @Override
@@ -52,25 +54,48 @@ public class Assets extends Fragment {
         dbHelper.close();
     }
 
-    public void onSelecionar() {
-        saida = view.findViewById(R.id.names);
-        String sql = "Select * from usuarios";
+    public void onSelecionarPorcentagem() {
+        saida = view.findViewById(R.id.maiorPorcentagem);
+        saida.setText("bla");
+        String sql = "Select * from usuarios where Acertos > 0 or Erros > 0";
         int numAcertos = 0;
         int numErros = 0;
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
         if (cursor.moveToFirst()) {
-            StringBuilder str = new StringBuilder();
             do {
                 numAcertos += cursor.getInt(3);
                 numErros += cursor.getInt(2);
 
             } while (cursor.moveToNext());
             if (numAcertos != 0 || numErros != 0)
-                saida.setText((100 * numAcertos) / (numAcertos + numErros));
+                saida.setText("Porcentagem de erros: " + (100 * numAcertos) / (numAcertos + numErros));
             else
-                saida.setText("sem dados suficienres");
+                saida.setText("Porcentagem de erros: sem dados suficienres");
         }
+        cursor.close();
+    }
+
+    public void onSelecionarNomeMaisErrado() {
+        saida = view.findViewById(R.id.nomeMaisErrado);
+        String sql = "Select Nome, Max(FalsoPositivo) from usuarios";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+
+        if (cursor.moveToFirst())
+            saida.setText("Nome mais errado: " + cursor.getString(cursor.getColumnIndex("Nome")));
+        else
+            saida.setText("Nome mais errado: sem dados suficienres");
+        cursor.close();
+    }
+    public void onSelecionarPessoaMaisErrada() {
+        saida = view.findViewById(R.id.pessoaMaisErrada);
+        String sql = "Select Nome, Max(Erros) from usuarios ";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+
+        if (cursor.moveToFirst())
+            saida.setText("Pessoa mais errada: " + cursor.getString(cursor.getColumnIndex("Nome")));
+        else
+            saida.setText("Pessoa mais errada: sem dados suficienres");
         cursor.close();
     }
 

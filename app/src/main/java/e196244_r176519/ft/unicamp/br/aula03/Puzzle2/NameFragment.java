@@ -23,7 +23,6 @@ import e196244_r176519.ft.unicamp.br.aula03.DataBase.DatabaseHelper;
 import e196244_r176519.ft.unicamp.br.aula03.MainActivity;
 import e196244_r176519.ft.unicamp.br.aula03.R;
 import e196244_r176519.ft.unicamp.br.aula03.alunos.Aluno;
-import e196244_r176519.ft.unicamp.br.aula03.alunos.Alunos;
 
 import static e196244_r176519.ft.unicamp.br.aula03.alunos.Alunos.alunos;
 
@@ -79,6 +78,7 @@ public class NameFragment extends Fragment {
                 String nomeEscolhido = ((Button) v).getText().toString();
                 if (nomeEscolhido.equals(nomeCorreto)) {
                     txtFeedback.setText("Correto!!");
+                    onUpdate(positionAluno, 0, 1, 0);
                     new Handler().postDelayed(
                             new Runnable() {
                                 @Override
@@ -90,10 +90,10 @@ public class NameFragment extends Fragment {
                     txtFeedback.setText("Incorreto!!");
                     numTentativas--;
                     txtTentativas.setText("Tentativas: " + numTentativas);
-
+                    onUpdate(positionAluno, 0, 0, 1);
                     if (numTentativas == 0) {
                         txtFeedback.setText("Você Perdeu!!");
-
+                        onUpdate(positionAluno, 1, 0, 0);
                         new Handler().postDelayed(
                                 new Runnable() {
                                     @Override
@@ -164,6 +164,17 @@ public class NameFragment extends Fragment {
         contentValues.put("FalsoPositivo", FalsoPositivo);
 
         sqLiteDatabase.insert("usuarios", null, contentValues);
+    }
+    public void onUpdate(int id, int erros, int acertos, int falsoPositivo) {
+        ContentValues contentValues = new ContentValues();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from usuarios where _id = "+id, null);
+        cursor.moveToFirst();
+        contentValues.put("_id", id);
+        contentValues.put("Nome", cursor.getString(1));
+        contentValues.put("Erros", cursor.getInt(2) + erros);
+        contentValues.put("Acertos", cursor.getInt(3) + acertos);
+        contentValues.put("FalsoPositivo", cursor.getInt(4) + falsoPositivo);
+        sqLiteDatabase.update("usuarios", contentValues, "_id = "+ id, null);
     }
 
     public void onStop() {
