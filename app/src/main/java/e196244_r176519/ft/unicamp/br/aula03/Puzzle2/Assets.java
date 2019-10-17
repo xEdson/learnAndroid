@@ -56,7 +56,6 @@ public class Assets extends Fragment {
 
     public void onSelecionarPorcentagem() {
         saida = view.findViewById(R.id.maiorPorcentagem);
-        saida.setText("bla");
         String sql = "Select * from usuarios where Acertos > 0 or Erros > 0";
         int numAcertos = 0;
         int numErros = 0;
@@ -69,16 +68,17 @@ public class Assets extends Fragment {
 
             } while (cursor.moveToNext());
             if (numAcertos != 0 || numErros != 0)
-                saida.setText("Porcentagem de erros: " + (100 * numAcertos) / (numAcertos + numErros));
-            else
-                saida.setText("Porcentagem de erros: sem dados suficienres");
+                saida.setText("Porcentagem de erros: " + (100 * numAcertos) / (numAcertos + numErros) + "%");
+
+        }else{
+            saida.setText("Porcentagem de erros: sem dados suficienres");
         }
         cursor.close();
     }
 
     public void onSelecionarNomeMaisErrado() {
         saida = view.findViewById(R.id.nomeMaisErrado);
-        String sql = "Select Nome, Max(FalsoPositivo) from usuarios";
+        String sql = "Select Nome from usuarios where FalsoPositivo > 0 order by FalsoPositivo";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
         if (cursor.moveToFirst())
@@ -89,7 +89,7 @@ public class Assets extends Fragment {
     }
     public void onSelecionarPessoaMaisErrada() {
         saida = view.findViewById(R.id.pessoaMaisErrada);
-        String sql = "Select Nome, Max(Erros) from usuarios ";
+        String sql = "Select Nome from usuarios where Erros > 0 order by Erros";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
         if (cursor.moveToFirst())
