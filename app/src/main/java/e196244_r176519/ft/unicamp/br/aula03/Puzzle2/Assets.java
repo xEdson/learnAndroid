@@ -68,7 +68,7 @@ public class Assets extends Fragment {
 
             } while (cursor.moveToNext());
             if (numAcertos != 0 || numErros != 0)
-                saida.setText("Porcentagem de erros: " + (100 * numAcertos) / (numAcertos + numErros) + "%");
+                saida.setText("Porcentagem de Acertos: " + (100 * numAcertos) / (numAcertos + numErros) + "%");
 
         }else{
             saida.setText("Porcentagem de erros: sem dados suficienres");
@@ -82,9 +82,9 @@ public class Assets extends Fragment {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
         if (cursor.moveToFirst())
-            saida.setText("Nome mais errado: " + cursor.getString(cursor.getColumnIndex("Nome")));
+            saida.setText("Nome que mais fez o jogador errar: " + cursor.getString(cursor.getColumnIndex("Nome")));
         else
-            saida.setText("Nome mais errado: sem dados suficienres");
+            saida.setText("Nome que mais fez o jogador errar: sem dados suficienres");
         cursor.close();
     }
     public void onSelecionarPessoaMaisErrada() {

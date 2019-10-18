@@ -153,21 +153,25 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(puzzleFragment, "alunos");
 
         } else if (id == R.id.jogo2) {
+            toast = Toast.makeText(contexto, "Jogo 2", Toast.LENGTH_SHORT);
             NameFragment nameFragment = (NameFragment) fragmentManager.findFragmentByTag("name");
             if (nameFragment == null) {
                 nameFragment = new NameFragment();
             }
             replaceFragment(nameFragment, "name");
         } else if (id == R.id.Assets) {
+            toast = Toast.makeText(contexto, "Assets", Toast.LENGTH_SHORT);
             Fragment assets = (Assets) fragmentManager.findFragmentByTag("Assets");
             if (assets == null) {
                 assets = new Assets();
             }
             replaceFragment(assets, "Assets");
         } else if (id == R.id.newAct) {
+            toast = Toast.makeText(contexto, "new Act", Toast.LENGTH_SHORT);
             Intent intent = new Intent(this, kotlinActivity.class);
             startActivity(intent);
         } else if (id == R.id.database) {
+            toast = Toast.makeText(contexto, "Database", Toast.LENGTH_SHORT);
             Fragment bd = fragmentManager.findFragmentByTag("db");
             if (bd == null)
                 bd = new DatabaseFragment();
