@@ -22,6 +22,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import e196244_r176519.ft.unicamp.br.aula03.DataBase.DatabaseFragment;
+import e196244_r176519.ft.unicamp.br.aula03.Internet.InternetFragment;
+import e196244_r176519.ft.unicamp.br.aula03.Jogo3.jogo3Fragment;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle.PuzzleFragment;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle2.Assets;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle2.NameFragment;
@@ -108,6 +110,13 @@ public class MainActivity extends AppCompatActivity
             if (mailFragment == null)
                 mailFragment = new mailFragment();
             replaceFragment(mailFragment, "mail");
+        } else if (id == R.id.Assets) {
+            Toast.makeText(contexto, "Assets", Toast.LENGTH_SHORT).show();
+            Fragment assets = (Assets) fragmentManager.findFragmentByTag("Assets");
+            if (assets == null) {
+                assets = new Assets();
+            }
+            replaceFragment(assets, "Assets");
         }
 
         return super.onOptionsItemSelected(item);
@@ -159,14 +168,7 @@ public class MainActivity extends AppCompatActivity
                 nameFragment = new NameFragment();
             }
             replaceFragment(nameFragment, "name");
-        } else if (id == R.id.Assets) {
-            toast = Toast.makeText(contexto, "Assets", Toast.LENGTH_SHORT);
-            Fragment assets = (Assets) fragmentManager.findFragmentByTag("Assets");
-            if (assets == null) {
-                assets = new Assets();
-            }
-            replaceFragment(assets, "Assets");
-        } else if (id == R.id.newAct) {
+        }else if (id == R.id.newAct) {
             toast = Toast.makeText(contexto, "new Act", Toast.LENGTH_SHORT);
             Intent intent = new Intent(this, kotlinActivity.class);
             startActivity(intent);
@@ -176,6 +178,18 @@ public class MainActivity extends AppCompatActivity
             if (bd == null)
                 bd = new DatabaseFragment();
             replaceFragment(bd, "db");
+        } else if (id == R.id.internet) {
+            toast = Toast.makeText(contexto, "Internet", Toast.LENGTH_SHORT);
+            Fragment bd = fragmentManager.findFragmentByTag("Internet");
+            if (bd == null)
+                bd = new InternetFragment();
+            replaceFragment(bd, "Internet");
+        } else if (id == R.id.jogo3) {
+            toast = Toast.makeText(contexto, "Jogo3", Toast.LENGTH_SHORT);
+            Fragment bd = fragmentManager.findFragmentByTag("Jogo3");
+            if (bd == null)
+                bd = new jogo3Fragment();
+            replaceFragment(bd, "Jogo3");
         }
         toast.show();
 

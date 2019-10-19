@@ -28,4 +28,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kotlinact">kotlinAct</string>
+    <string name="interent">interent</string>
+    <string name="jogo_3">jogo 3</string>
+    <string name="Assets">Assets</string>
 </resources>

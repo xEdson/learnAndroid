@@ -25,10 +25,6 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/jogo2" />
         <item
-            android:id="@+id/Assets"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/assets" />
-        <item
             android:id="@+id/newAct"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/kotlinact" />
@@ -36,6 +32,14 @@
             android:id="@+id/database"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/database" />
+        <item
+            android:id="@+id/internet"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/interent" />
+        <item
+            android:id="@+id/jogo3"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/jogo_3" />
     </group>
 
 </menu>
