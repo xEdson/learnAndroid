@@ -1,9 +1,7 @@
 package e196244_r176519.ft.unicamp.br.aula03.kotlin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import e196244_r176519.ft.unicamp.br.aula03.R
 import kotlinx.android.synthetic.main.activity_kotlin.*
 
