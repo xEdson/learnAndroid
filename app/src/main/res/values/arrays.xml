@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="rest_requests">
+        <item>GET</item>
+        <item>PUT</item>
+        <item>POST</item>
+        <item>PATCH</item>
+    </string-array>
+</resources>

@@ -1,11 +1,7 @@
 package e196244_r176519.ft.unicamp.br.aula03.Jogo3;
 
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +10,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import e196244_r176519.ft.unicamp.br.aula03.Jogo3.MyViaCepAsyncTask;
+import androidx.fragment.app.Fragment;
+
 import e196244_r176519.ft.unicamp.br.aula03.R;
 
 /**
@@ -84,18 +81,25 @@ public class jogo3Fragment extends Fragment {
 
     public void validateCorrect() {
         int id = rg.getCheckedRadioButtonId();
-        if (((RadioButton) view.findViewById(id)).getText().equals(this.nomeCorreto)) {
+        String typo;
+        if (getCorrect(id)) {
             Toast.makeText(getContext(), "Acertou", Toast.LENGTH_SHORT).show();
+            typo = "Acertos";
         } else {
             Toast.makeText(getContext(), "Errou", Toast.LENGTH_SHORT).show();
+            typo = "Erros";
         }
         rg.clearCheck();
         new MyViaCepAsyncTask(this).execute();
+        new MyFirstWebClient(nomeCorreto, typo).execute();
+    }
+
+    private boolean getCorrect(int id) {
+        return ((RadioButton) view.findViewById(id)).getText().equals(this.nomeCorreto);
     }
 
     public class gameItemClick implements View.OnClickListener {
         jogo3Fragment pg;
-        String chute;
 
         public gameItemClick(jogo3Fragment pg) {
             new MyViaCepAsyncTask(pg).execute();
@@ -104,12 +108,11 @@ public class jogo3Fragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            if (pg != null)
+            if (pg != null) {
                 new MyViaCepAsyncTask(pg).execute();
+            }
         }
 
     }
-
-    ;
 
 }

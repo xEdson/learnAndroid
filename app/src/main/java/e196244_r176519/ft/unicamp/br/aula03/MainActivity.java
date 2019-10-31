@@ -23,6 +23,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import e196244_r176519.ft.unicamp.br.aula03.DataBase.DatabaseFragment;
 import e196244_r176519.ft.unicamp.br.aula03.Internet.InternetFragment;
+import e196244_r176519.ft.unicamp.br.aula03.Jogo3.AssetsGame3Fragments;
 import e196244_r176519.ft.unicamp.br.aula03.Jogo3.jogo3Fragment;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle.PuzzleFragment;
 import e196244_r176519.ft.unicamp.br.aula03.Puzzle2.Assets;
@@ -115,6 +116,13 @@ public class MainActivity extends AppCompatActivity
             Fragment assets = (Assets) fragmentManager.findFragmentByTag("Assets");
             if (assets == null) {
                 assets = new Assets();
+            }
+            replaceFragment(assets, "Assets");
+        } else if (id == R.id.AssetsGame3) {
+            Toast.makeText(contexto, "Assets", Toast.LENGTH_SHORT).show();
+            Fragment assets = (AssetsGame3Fragments) fragmentManager.findFragmentByTag("Assets3");
+            if (assets == null) {
+                assets = new AssetsGame3Fragments();
             }
             replaceFragment(assets, "Assets");
         }

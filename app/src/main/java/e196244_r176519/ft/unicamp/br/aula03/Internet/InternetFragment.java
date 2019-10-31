@@ -2,14 +2,14 @@ package e196244_r176519.ft.unicamp.br.aula03.Internet;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import e196244_r176519.ft.unicamp.br.aula03.R;
 
@@ -19,6 +19,7 @@ import e196244_r176519.ft.unicamp.br.aula03.R;
 public class InternetFragment extends Fragment {
 
     private View lview;
+    private Spinner spn;
 
 
     public InternetFragment() {
@@ -36,16 +37,15 @@ public class InternetFragment extends Fragment {
 
         final TextView textView = lview.findViewById(R.id.textView);
         final EditText editText = lview.findViewById(R.id.editText);
-
+        spn = lview.findViewById(R.id.restSpinner);
         lview.findViewById(R.id.btnViaCep).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        new MyViaCepAsyncTask(textView).execute(editText.getText().toString());
+                        new MyFirstWebClient(textView).execute(editText.getText().toString(), spn.getSelectedItem().toString());
                     }
                 }
         );
-
 
         return lview;
     }

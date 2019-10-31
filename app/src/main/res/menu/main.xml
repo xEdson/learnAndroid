@@ -16,4 +16,9 @@
         android:orderInCategory="100"
         android:title="@string/Assets"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/AssetsGame3"
+        android:orderInCategory="100"
+        android:title="AssetsGame3"
+        app:showAsAction="never" />
 </menu>
